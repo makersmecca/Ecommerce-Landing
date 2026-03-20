@@ -7,12 +7,15 @@
 
   .header-section {
     width: 100%;
+    background-color: black;
 
     .header-top {
+      justify-self: center;
       display: flex;
+      width: 100%;
+      max-width: 1920px;
       height: 55px;
       align-items: center;
-      background-color: black;
 
       .social-media-container {
         display: flex;
@@ -77,13 +80,26 @@
   .navbar-section {
     margin-top: 30px;
     margin-bottom: 30px;
+    max-width: 1250px;
   }
 
   .hero-section {
     position: relative;
+    width: 100%;
+    max-width: 1920px;
+    justify-self: center;
+
+    @media(max-width:1024px) {
+      height: 630px;
+      display: flex;
+      align-items: flex-end;
+      background-color: #f0f0f0;
+      padding-top: 50px;
+    }
+
 
     .hero-img {
-      width: 100vw;
+      width: 100%;
       background-color: #f0f0f0;
       display: flex;
       justify-content: flex-end;
@@ -93,12 +109,26 @@
         max-width: 1440px;
         max-height: 663px;
         padding-right: 20px;
+
+        @media(max-width: 1024px) {
+          width: auto;
+          padding: 0px;
+        }
       }
     }
 
     .hero-content {
       position: absolute;
       top: 100px;
+
+      @media (max-width:1290px) {
+        bottom: 0px;
+        height: 100%;
+        top: auto;
+        display: flex;
+        flex-direction: column;
+      }
+
       left: 5vw;
 
       .hero-heading {
@@ -108,6 +138,16 @@
         font-size: 64px;
         letter-spacing: 1px;
         padding-left: 20px;
+
+        @media(max-width:1024px) {
+          font-size: 42px;
+          margin-top: 40px;
+        }
+
+        @media (min-width:1025px) and (max-width:1290px) {
+          font-size: 52px;
+          margin-top: 20px;
+        }
       }
 
       .hero-subheading {
@@ -135,17 +175,37 @@
       .hero-stats-sections {
         display: flex;
         gap: 2px;
-        background-color: #d1d1d1;
         width: 617px;
         margin-top: 24px;
 
+        @media(max-width:1024px) {
+          flex-direction: column;
+          max-width: 190px;
+        }
+
+        @media (min-width:1025px) and (max-width:1290px) {
+          width: 500px;
+          margin-top: auto;
+          margin-bottom: 12px;
+        }
+
         .stat {
-          background-color: #f0f0f0;
-          width: auto;
+          max-width: 190px;
           padding: 0px 20px;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
+          border-right: 1px solid #d1d1d1;
+
+          @media(max-width:1024px) {
+            border-bottom: 1px solid #d1d1d1;
+            border-right: none;
+            padding-bottom: 20px;
+          }
+
+          &:last-child {
+            border: none;
+          }
 
           .stat-data {
             font-family: "Red Hat Display", sans-serif;
@@ -153,6 +213,10 @@
             font-weight: 300;
             font-style: normal;
             font-size: 48px;
+
+            @media (min-width:1025px) and (max-width:1290px) {
+              font-size: 36px;
+            }
           }
         }
       }
@@ -165,6 +229,8 @@
 
     .section-title {
       width: 100%;
+      max-width: 1920px;
+      justify-self: center;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -176,6 +242,7 @@
     .section-break {
       border: 1px solid black;
       width: 98vw;
+      max-width: 1920px;
       justify-self: center;
       margin: 50px 0px;
       opacity: 0.2;

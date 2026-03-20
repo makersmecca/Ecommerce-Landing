@@ -12,7 +12,6 @@ const Navbar = () => {
           <li className="shop-dropdown">Shop</li>
           <li className="">On Sale</li>
           <li>New Arrivals</li>
-          <li>Brands</li>
         </ul>
       </div>
       <div className="search-section">

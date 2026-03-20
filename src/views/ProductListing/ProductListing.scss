@@ -1,6 +1,8 @@
     .products-listing-wrapper {
         position: relative;
         width: 100%;
+        max-width: 1920px;
+        justify-self: center;
 
         .scroll-btn {
             position: absolute;
@@ -68,6 +70,8 @@
     .CTA-section {
         height: 60px;
         width: 100%;
+        max-width: 1920px;
+        justify-self: center;
         display: flex;
         justify-content: center;
         align-items: center;

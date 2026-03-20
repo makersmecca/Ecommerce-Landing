@@ -1,10 +1,18 @@
+import { useState, useMemo, useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
+import MobileNavbar from "../../components/MobileNavbar/MobileNavbar";
+import ProductListing from "../ProductListing/ProductListing";
 import { Products } from "../../assets/Products";
 import "./Homepage.scss";
-import { useState, useMemo } from "react";
-import ProductListing from "../ProductListing/ProductListing";
 const Homepage = () => {
   const [showHeader, setShowHeader] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 1024);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const popularProducts = useMemo(
     () => ({
       productsList: Products.flatMap((cat) =>
@@ -52,9 +60,13 @@ const Homepage = () => {
           </div>
         )}
       </div>
-      <div className="navbar-section">
-        <Navbar />
-      </div>
+      {isMobile ? (
+        <MobileNavbar />
+      ) : (
+        <div className="navbar-section">
+          <Navbar />
+        </div>
+      )}
       <div className="hero-section">
         <div className="hero-img">
           <img src="/heroImg.png" alt="" />
@@ -93,7 +105,9 @@ const Homepage = () => {
         <div className="section-break"></div>
         <div className="section-title">New Launches</div>
         <ProductListing Products={newLaunches} />
+        <div className="section-break"></div>
       </div>
+      <div className="categories-section"></div>
     </div>
   );
 };
