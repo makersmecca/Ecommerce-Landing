@@ -1,0 +1,72 @@
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90vw;
+  max-width: 1250px;
+  .ecom-logo {
+    width: auto;
+    cursor: pointer;
+    a {
+      text-decoration: none;
+      color: black;
+      font-family: "Special Gothic Expanded One", sans-serif;
+      font-style: normal;
+      font-weight: 900;
+      font-size: 32px;
+    }
+  }
+  .navItems {
+    ul {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      max-width: 320px;
+      padding: 0px;
+      li {
+        font-size: 16px;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .search-section {
+    height: 48px;
+    position: relative;
+    .search-input {
+      border: 0px;
+      border-radius: 62px;
+      background-color: #f0f0f0;
+      height: 48px;
+      width: 30vw;
+      max-width: 400px;
+      padding: 0px 52px;
+    }
+    .search-icon {
+      position: absolute;
+      z-index: 10;
+      top: 12px;
+      left: 15px;
+    }
+  }
+  .user-section {
+    display: flex;
+    gap: 8px;
+    .cart-section,
+    .profile-section {
+      border-radius: 50px;
+      cursor: pointer;
+      height: 44px;
+      width: 44px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .cart-section:hover,
+    .profile-section:hover {
+      background-color: #f0f0f0;
+    }
+  }
+}
