@@ -31,6 +31,23 @@ const Homepage = () => {
   );
   return (
     <div className="homepage-container">
+      {isMobile && <MobileNavbar />}
+      {isMobile && (
+        <div className="mobile-header-section">
+          <div className="brand-name">ECOMM.COM</div>
+          <div className="social-media-container">
+            <div className="social-btn">
+              <img src="/social-icons/igIcon.svg" height={25} width={25} />
+            </div>
+            <div className="social-btn">
+              <img src="/social-icons/xIcon.svg" height={25} width={25} />
+            </div>
+            <div className="social-btn">
+              <img src="/social-icons/fbIcon.svg" height={25} width={25} />
+            </div>
+          </div>
+        </div>
+      )}
       <div className="header-section">
         {showHeader && (
           <div className="header-top">
@@ -60,9 +77,7 @@ const Homepage = () => {
           </div>
         )}
       </div>
-      {isMobile ? (
-        <MobileNavbar />
-      ) : (
+      {!isMobile && (
         <div className="navbar-section">
           <Navbar />
         </div>

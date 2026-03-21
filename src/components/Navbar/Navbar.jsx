@@ -1,6 +1,7 @@
 import "./Navbar.scss";
 import Cart from "../Cart/Cart";
 import UserProfile from "../Login/UserProfile";
+import Favourites from "../favourites/Favourites";
 const Navbar = () => {
   return (
     <div className="navbar-container">
@@ -32,6 +33,7 @@ const Navbar = () => {
       <div className="user-section">
         <Cart />
         <UserProfile />
+        <Favourites />
       </div>
     </div>
   );
