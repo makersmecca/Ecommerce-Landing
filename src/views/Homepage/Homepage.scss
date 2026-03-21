@@ -5,63 +5,9 @@
   overflow: hidden;
   height: 100%;
 
-  .mobile-header-section {
-    position: fixed;
-    top: 0px;
-    z-index: 30;
-    background-color: black;
-    width: 100vw;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    .brand-name {
-      color: white;
-      background-color: black;
-      font-family: "Special Gothic Expanded One", sans-serif;
-      padding-left: 8px;
-      font-size: 26px;
-    }
-
-    .social-media-container {
-      display: flex;
-      flex-direction: row;
-      gap: 5px;
-      padding-right: 8px;
-
-      @media (min-width: 768px) {
-        display: none;
-      }
-
-      .social-btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 27px;
-        width: 27px;
-        background-color: #d6d6d6;
-        border-radius: 5px;
-        padding: 4px;
-        cursor: pointer;
-
-        &:hover {
-          img {
-            scale: 0.9;
-            transition: scale ease-in-out 0.2s;
-          }
-        }
-      }
-    }
-  }
-
   .header-section {
     width: 100%;
     background-color: black;
-
-    @media(max-width: 1024px) {
-      margin-top: 44px;
-    }
 
     .header-top {
       justify-self: center;
@@ -151,6 +97,75 @@
     }
   }
 
+  .mobile-header-section {
+    background-color: white;
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.12);
+
+    &.mobile-header-fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .brand-name {
+      color: black;
+      background-color: white;
+      font-family: "Special Gothic Expanded One", sans-serif;
+      padding-left: 6vw;
+      font-weight: 800;
+
+      @media (max-width: 768px) {
+        padding-left: 20px;
+      }
+
+      font-size: 26px;
+    }
+
+    .hamburger-menu-container {
+      margin-top: 2px;
+      padding-right: 15px;
+    }
+
+    // .social-media-container {
+    //   display: flex;
+    //   flex-direction: row;
+    //   gap: 5px;
+    //   padding-right: 8px;
+
+    //   @media (min-width: 768px) {
+    //     display: none;
+    //   }
+
+    //   .social-btn {
+    //     display: none;
+    //     justify-content: center;
+    //     align-items: center;
+    //     height: 27px;
+    //     width: 27px;
+    //     border-radius: 5px;
+    //     padding: 4px;
+    //     cursor: pointer;
+
+    //     img {
+    //       filter: invert(1);
+    //     }
+
+    //     &:hover {
+    //       img {
+    //         scale: 0.9;
+    //         transition: scale ease-in-out 0.2s;
+    //       }
+    //     }
+    //   }
+    // }
+  }
+
   .navbar-section {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -236,6 +251,7 @@
           font-size: 40px;
           margin-top: 20px;
           padding-right: 20px;
+          width: 90vw;
         }
 
         @media(min-width: 769px) and (max-width:1024px) {
@@ -256,6 +272,7 @@
 
         @media (max-width: 768px) {
           padding-right: 20px;
+          width: 90vw;
         }
       }
 
@@ -302,7 +319,7 @@
 
         @media (max-width: 500px) {
           flex-direction: column;
-          max-width: 400px;
+          width: 100vw;
           justify-self: center;
           align-items: center;
         }

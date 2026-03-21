@@ -1,8 +1,17 @@
 import ProductCard from "../../components/ProductCard/ProductCard";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import "./ProductListing.scss";
 const ProductListing = ({ Products }) => {
   const listingRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateScrollState = () => {
+    const el = listingRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 0);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
+  };
 
   useEffect(() => {
     const el = listingRef.current;
@@ -12,7 +21,12 @@ const ProductListing = ({ Products }) => {
       el.scrollBy({ left: e.deltaY, behavior: "smooth" });
     };
     el.addEventListener("wheel", onWheel, { passive: false });
-    return () => el.removeEventListener("wheel", onWheel);
+    el.addEventListener("scroll", updateScrollState);
+    updateScrollState();
+    return () => {
+      el.removeEventListener("wheel", onWheel);
+      el.removeEventListener("scroll", updateScrollState);
+    };
   }, []);
 
   const scroll = (dir) =>
@@ -20,9 +34,9 @@ const ProductListing = ({ Products }) => {
   return (
     <>
       <div className="products-listing-wrapper">
-        <button className="scroll-btn left" onClick={() => scroll(-1)}>
+        {canScrollLeft && <button className="scroll-btn left" onClick={() => scroll(-1)}>
           <img src="/icons/rightArrow.svg" />
-        </button>
+        </button>}
         <div className="products-listing" ref={listingRef}>
           {Products.productsList.map((product) => (
             <div key={product.productId} className="listing-card">
@@ -41,9 +55,9 @@ const ProductListing = ({ Products }) => {
             </div>
           ))}
         </div>
-        <button className="scroll-btn right" onClick={() => scroll(1)}>
+        {canScrollRight && <button className="scroll-btn right" onClick={() => scroll(1)}>
           <img src="/icons/rightArrow.svg" />
-        </button>
+        </button>}
       </div>
       <div className="CTA-section">
         <button className="cta-btn">View All</button>

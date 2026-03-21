@@ -6,25 +6,19 @@ const MobileNavbar = () => {
   return (
     <>
       <div className="mobile-navbar-container">
-        {/* <div className="search-section">
-          <img
-            className="search-icon"
-            src="/search.svg"
-            alt=""
-            height={24}
-            width={24}
-          />
-          <input
-            id="seach-input"
-            className="search-input"
-            type="text"
-            placeholder="Search for products..."
-          />
-        </div> */}
-        <div className="user-section">
-          {/* <Cart />
-          <UserProfile />
-          <Favourites /> */}
+        <div className="navbar-items">
+          <div className="search">
+            <img src="/search.svg" height={25} width={25} />
+          </div>
+          <div className="cart">
+            <Cart />
+          </div>
+          <div className="favourites">
+            <Favourites />
+          </div>
+          <div className="userprofile">
+            <UserProfile />
+          </div>
         </div>
       </div>
     </>

@@ -1,18 +1,33 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import MobileNavbar from "../../components/MobileNavbar/MobileNavbar";
 import ProductListing from "../ProductListing/ProductListing";
+import Hamburger from "../../components/Hamburger/Hamburger";
 import { Products } from "../../assets/Products";
 import "./Homepage.scss";
 const Homepage = () => {
   const [showHeader, setShowHeader] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+  const [mobileHeaderFixed, setMobileHeaderFixed] = useState(false);
+  const headerSectionRef = useRef(null);
+  const popularSectionRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 1024);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    if (!isMobile) return;
+    const handleScroll = () => {
+      const headerHeight = headerSectionRef.current?.offsetHeight ?? 0;
+      setMobileHeaderFixed(window.scrollY >= headerHeight);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isMobile]);
+
   const popularProducts = useMemo(
     () => ({
       productsList: Products.flatMap((cat) =>
@@ -32,23 +47,7 @@ const Homepage = () => {
   return (
     <div className="homepage-container">
       {isMobile && <MobileNavbar />}
-      {isMobile && (
-        <div className="mobile-header-section">
-          <div className="brand-name">ECOMM.COM</div>
-          <div className="social-media-container">
-            <div className="social-btn">
-              <img src="/social-icons/igIcon.svg" height={25} width={25} />
-            </div>
-            <div className="social-btn">
-              <img src="/social-icons/xIcon.svg" height={25} width={25} />
-            </div>
-            <div className="social-btn">
-              <img src="/social-icons/fbIcon.svg" height={25} width={25} />
-            </div>
-          </div>
-        </div>
-      )}
-      <div className="header-section">
+      <div className="header-section" ref={headerSectionRef}>
         {showHeader && (
           <div className="header-top">
             <div className="social-media-container">
@@ -77,6 +76,26 @@ const Homepage = () => {
           </div>
         )}
       </div>
+      {isMobile && (
+        <div
+          className={`mobile-header-section${mobileHeaderFixed ? " mobile-header-fixed" : ""}`}
+        >
+          <div className="brand-name">ECOMM.COM</div>
+          <Hamburger />
+          {/* <div className="social-media-container">
+            <div className="social-btn">
+              <img src="/social-icons/igIcon.svg" height={25} width={25} />
+            </div>
+            <div className="social-btn">
+              <img src="/social-icons/xIcon.svg" height={25} width={25} />
+            </div>
+            <div className="social-btn">
+              <img src="/social-icons/fbIcon.svg" height={25} width={25} />
+            </div>
+          </div> */}
+        </div>
+      )}
+      {isMobile && mobileHeaderFixed && <div style={{ height: 44 }} />}
       {!isMobile && (
         <div className="navbar-section">
           <Navbar />
@@ -96,7 +115,17 @@ const Homepage = () => {
             Crafted for comfort, designed to stand out.
           </div>
           <div className="cta-btn">
-            <button>Shop now</button>
+            <button
+              onClick={() => {
+                const y =
+                  popularSectionRef.current?.getBoundingClientRect().top +
+                  window.scrollY -
+                  (isMobile ? 80 : 0);
+                window.scrollTo({ top: y, behavior: "smooth" });
+              }}
+            >
+              Shop now
+            </button>
           </div>
           <div className="hero-stats-sections">
             <div className="stat">
@@ -114,7 +143,7 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-      <div className="products-section">
+      <div className="products-section" ref={popularSectionRef}>
         <div className="section-title">Popular</div>
         <ProductListing Products={popularProducts} />
         <div className="section-break"></div>
