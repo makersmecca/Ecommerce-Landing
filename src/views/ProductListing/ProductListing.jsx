@@ -34,9 +34,11 @@ const ProductListing = ({ Products }) => {
   return (
     <>
       <div className="products-listing-wrapper">
-        {canScrollLeft && <button className="scroll-btn left" onClick={() => scroll(-1)}>
-          <img src="/icons/rightArrow.svg" />
-        </button>}
+        {canScrollLeft && (
+          <button className="scroll-btn left" onClick={() => scroll(-1)}>
+            <img src="/icons/rightArrow.svg" />
+          </button>
+        )}
         <div className="products-listing" ref={listingRef}>
           {Products.productsList.map((product) => (
             <div key={product.productId} className="listing-card">
@@ -51,13 +53,16 @@ const ProductListing = ({ Products }) => {
                     parseInt(product.originalPrice, 10)) *
                     100,
                 ).toString()}
+                rating={product.rating}
               />
             </div>
           ))}
         </div>
-        {canScrollRight && <button className="scroll-btn right" onClick={() => scroll(1)}>
-          <img src="/icons/rightArrow.svg" />
-        </button>}
+        {canScrollRight && (
+          <button className="scroll-btn right" onClick={() => scroll(1)}>
+            <img src="/icons/rightArrow.svg" />
+          </button>
+        )}
       </div>
       <div className="CTA-section">
         <button className="cta-btn">View All</button>

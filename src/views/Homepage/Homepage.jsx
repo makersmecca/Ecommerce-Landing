@@ -3,7 +3,8 @@ import Navbar from "../../components/Navbar/Navbar";
 import MobileNavbar from "../../components/MobileNavbar/MobileNavbar";
 import ProductListing from "../ProductListing/ProductListing";
 import Hamburger from "../../components/Hamburger/Hamburger";
-import { Products } from "../../assets/Products";
+import Categories from "../Categories/Categories";
+import { Products, categories } from "../../assets/Products";
 import "./Homepage.scss";
 const Homepage = () => {
   const [showHeader, setShowHeader] = useState(true);
@@ -31,7 +32,7 @@ const Homepage = () => {
   const popularProducts = useMemo(
     () => ({
       productsList: Products.flatMap((cat) =>
-        cat.productsList.filter((p) => p.badge !== "New!"),
+        cat.productsList.filter((p) => p.badge !== "New!" && p.rating >= 4.0),
       ).sort(() => Math.random() - 0.5),
     }),
     [],
@@ -82,17 +83,6 @@ const Homepage = () => {
         >
           <div className="brand-name">ECOMM.COM</div>
           <Hamburger />
-          {/* <div className="social-media-container">
-            <div className="social-btn">
-              <img src="/social-icons/igIcon.svg" height={25} width={25} />
-            </div>
-            <div className="social-btn">
-              <img src="/social-icons/xIcon.svg" height={25} width={25} />
-            </div>
-            <div className="social-btn">
-              <img src="/social-icons/fbIcon.svg" height={25} width={25} />
-            </div>
-          </div> */}
         </div>
       )}
       {isMobile && mobileHeaderFixed && <div style={{ height: 44 }} />}
@@ -151,7 +141,10 @@ const Homepage = () => {
         <ProductListing Products={newLaunches} />
         <div className="section-break"></div>
       </div>
-      <div className="categories-section"></div>
+      <div className="categories-section">
+        <div className="section-title">Categories</div>
+        <Categories categories={categories} />
+      </div>
     </div>
   );
 };

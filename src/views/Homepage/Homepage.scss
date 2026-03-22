@@ -5,6 +5,11 @@
   overflow: hidden;
   height: 100%;
 
+  @media (max-width: 767px) {
+    margin-bottom: 50px;
+  }
+
+
   .header-section {
     width: 100%;
     background-color: black;
@@ -131,39 +136,6 @@
       margin-top: 2px;
       padding-right: 15px;
     }
-
-    // .social-media-container {
-    //   display: flex;
-    //   flex-direction: row;
-    //   gap: 5px;
-    //   padding-right: 8px;
-
-    //   @media (min-width: 768px) {
-    //     display: none;
-    //   }
-
-    //   .social-btn {
-    //     display: none;
-    //     justify-content: center;
-    //     align-items: center;
-    //     height: 27px;
-    //     width: 27px;
-    //     border-radius: 5px;
-    //     padding: 4px;
-    //     cursor: pointer;
-
-    //     img {
-    //       filter: invert(1);
-    //     }
-
-    //     &:hover {
-    //       img {
-    //         scale: 0.9;
-    //         transition: scale ease-in-out 0.2s;
-    //       }
-    //     }
-    //   }
-    // }
   }
 
   .navbar-section {
@@ -396,7 +368,7 @@
       margin-bottom: 40px;
 
       @media (max-width: 767px) {
-        font-size: 45px;
+        font-size: 40px;
         text-align: center;
       }
     }
@@ -409,7 +381,35 @@
       margin: 50px 0px;
       opacity: 0.2;
     }
+  }
 
+  .categories-section {
+    width: 100vw;
 
+    .section-title {
+      width: 100%;
+      max-width: 1920px;
+      justify-self: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Special Gothic Expanded One", sans-serif;
+      font-size: 52px;
+      margin-bottom: 40px;
+
+      @media (max-width: 767px) {
+        font-size: 40px;
+        text-align: center;
+      }
+    }
+
+    .section-break {
+      border: 1px solid black;
+      width: 98vw;
+      max-width: 1920px;
+      justify-self: center;
+      margin: 50px 0px;
+      opacity: 0.2;
+    }
   }
 }

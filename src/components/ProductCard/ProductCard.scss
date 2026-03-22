@@ -2,6 +2,25 @@
   cursor: pointer;
   background-color: #f0f0f0;
   border-radius: 8px;
+  position: relative;
+  width: 300px;
+
+  .discount {
+    background-color: bisque;
+    padding: 5px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 20px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 15px;
+    z-index: 10;
+    width: 55px;
+    height: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
 
   &__image-wrapper {
     position: relative;
@@ -19,7 +38,7 @@
     }
   }
 
-  &:hover img {
+  &:hover &__image-wrapper img {
     transform: scale(1.05);
   }
 
@@ -36,37 +55,71 @@
   }
 
   &__info {
-    margin-top: 10px;
+    margin-top: 2px;
+    width: 300px;
+    box-sizing: border-box;
     padding: 0px 20px 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__details {
+    width: 100%;
   }
 
   &__title {
-    font-size: 18px;
+    font-family: "Lexend", sans-serif;
+    font-size: 20px;
     font-weight: 500;
     margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__price {
     display: flex;
     gap: 8px;
+    width: 100%;
     align-items: center;
+    margin-top: 10px;
 
     .price {
-      font-weight: 600;
+      font-weight: 900;
+      font-size: 24px;
+      margin-left: 2px;
+      font-family: "Datatype", monospace;
     }
 
     .original-price {
       text-decoration: line-through;
       color: #999;
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 500;
+      margin-left: 4px;
+      font-family: "Datatype", monospace;
     }
 
-    .discount {
+    .product-rating {
       margin-left: auto;
-      background-color: bisque;
-      padding: 2px 6px;
-      border-radius: 5px;
+
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        span {
+          font-family: "Datatype", monospace;
+          font-size: 15px;
+          margin-top: 4px;
+        }
+
+        .rating-star-div {
+          display: flex;
+          align-items: center;
+        }
+      }
     }
   }
 }
