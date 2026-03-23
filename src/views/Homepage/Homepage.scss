@@ -5,6 +5,15 @@
   overflow: hidden;
   height: 100%;
 
+  .section-break {
+    border: 1px solid black;
+    width: 98vw;
+    max-width: 1920px;
+    justify-self: center;
+    margin: 50px 0px;
+    opacity: 0.2;
+  }
+
   @media (max-width: 767px) {
     margin-bottom: 50px;
   }
@@ -373,14 +382,7 @@
       }
     }
 
-    .section-break {
-      border: 1px solid black;
-      width: 98vw;
-      max-width: 1920px;
-      justify-self: center;
-      margin: 50px 0px;
-      opacity: 0.2;
-    }
+
   }
 
   .categories-section {
@@ -403,13 +405,5 @@
       }
     }
 
-    .section-break {
-      border: 1px solid black;
-      width: 98vw;
-      max-width: 1920px;
-      justify-self: center;
-      margin: 50px 0px;
-      opacity: 0.2;
-    }
   }
 }

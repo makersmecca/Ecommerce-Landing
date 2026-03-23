@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
 export const categories = {
-  tshirts: uuidv4(),
+  socks: uuidv4(),
   caps: uuidv4(),
   hoodies: uuidv4(),
   shoes: uuidv4(),
-  socks: uuidv4(),
+  tshirts: uuidv4(),
 };
 export const Products = [
   {

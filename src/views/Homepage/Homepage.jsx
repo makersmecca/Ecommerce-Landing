@@ -145,6 +145,7 @@ const Homepage = () => {
         <div className="section-title">Categories</div>
         <Categories categories={categories} />
       </div>
+      <div className="section-break"></div>
     </div>
   );
 };
