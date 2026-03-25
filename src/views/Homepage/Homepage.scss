@@ -133,12 +133,21 @@
       font-family: "Special Gothic Expanded One", sans-serif;
       padding-left: 6vw;
       font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
 
       @media (max-width: 768px) {
-        padding-left: 20px;
+        padding-left: 8px;
       }
 
       font-size: 26px;
+
+      .brand-logo-img {
+        height: 40px;
+        width: 40px;
+      }
     }
 
     .hamburger-menu-container {
@@ -180,13 +189,16 @@
       justify-content: flex-end;
 
       img {
-        padding-right: 20px;
+        height: 622px;
+        width: auto;
+        padding-right: 3vw;
 
         @media (max-width: 768px) {
           position: absolute;
           opacity: 0.5;
           right: -230px;
           bottom: 0;
+          height: 100%;
           width: auto;
           padding: 0px;
         }
@@ -195,8 +207,10 @@
           position: absolute;
           right: -100px;
           bottom: 0;
+          height: 100%;
           width: auto;
-          padding: 0px;
+          padding-right: 110px;
+          opacity: 0.7;
         }
       }
     }

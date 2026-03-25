@@ -81,7 +81,10 @@ const Homepage = () => {
         <div
           className={`mobile-header-section${mobileHeaderFixed ? " mobile-header-fixed" : ""}`}
         >
-          <div className="brand-name">ECOMM.COM</div>
+          <a href="/" className="brand-name">
+            <img src="/Logo.png" className="brand-logo-img" alt="brand logo" />
+            VERITY.COM
+          </a>
           <Hamburger />
         </div>
       )}
@@ -93,7 +96,7 @@ const Homepage = () => {
       )}
       <div className="hero-section">
         <div className="hero-img">
-          <img src="/heroImg.png" alt="" />
+          <img src="/heroImg2.png" alt="" />
         </div>
         <div className="hero-content">
           <div className="hero-heading">

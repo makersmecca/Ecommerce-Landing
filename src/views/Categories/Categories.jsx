@@ -5,7 +5,7 @@ const Categories = ({ categories }) => {
   const entries = Object.entries(categories);
   const colSize = Math.ceil(entries.length / NUM_COLS);
   const cols = Array.from({ length: NUM_COLS }, (_, i) =>
-    entries.slice(i * colSize, (i + 1) * colSize)
+    entries.slice(i * colSize, (i + 1) * colSize),
   );
 
   return (
