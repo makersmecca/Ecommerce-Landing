@@ -10,6 +10,7 @@ const Homepage = () => {
   const [showHeader, setShowHeader] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
   const [mobileHeaderFixed, setMobileHeaderFixed] = useState(false);
+  const [showMobileNavItems, setShowMobileNavItems] = useState(false);
   const headerSectionRef = useRef(null);
   const popularSectionRef = useRef(null);
 
@@ -78,15 +79,53 @@ const Homepage = () => {
         )}
       </div>
       {isMobile && (
-        <div
-          className={`mobile-header-section${mobileHeaderFixed ? " mobile-header-fixed" : ""}`}
-        >
-          <a href="/" className="brand-name">
-            <img src="/Logo.png" className="brand-logo-img" alt="brand logo" />
-            VERITY.COM
-          </a>
-          <Hamburger />
-        </div>
+        <>
+          <div
+            className={`mobile-header-section${mobileHeaderFixed ? " mobile-header-fixed" : ""}`}
+          >
+            <a href="/" className="brand-name">
+              <img
+                src="/Logo.png"
+                className="brand-logo-img"
+                alt="brand logo"
+              />
+              VERITY.COM
+            </a>
+            <Hamburger toggleMobileNavItems={setShowMobileNavItems} />
+          </div>
+          {showMobileNavItems && (
+            <div
+              className="mobile-nav-overlay"
+              onClick={() => setShowMobileNavItems(false)}
+            />
+          )}
+          <div
+            className={`mobile-top-nav-items ${showMobileNavItems ? "show" : "hide"}`}
+          >
+            <button
+              className="close-mobile-nav"
+              onClick={() => setShowMobileNavItems(false)}
+            >
+              <img src="/icons/closeIcon-black.svg" height={30} width={30} />
+            </button>
+            <ul>
+              <li>Shop</li>
+              <li>On Sale</li>
+              <li>New Arrivals</li>
+            </ul>
+            <div className="social-media-container">
+              <div className="social-btn">
+                <img src="/social-icons/igIcon.svg" />
+              </div>
+              <div className="social-btn">
+                <img src="/social-icons/xIcon.svg" height={25} width={25} />
+              </div>
+              <div className="social-btn">
+                <img src="/social-icons/fbIcon.svg" />
+              </div>
+            </div>
+          </div>
+        </>
       )}
       {isMobile && mobileHeaderFixed && <div style={{ height: 44 }} />}
       {!isMobile && (
