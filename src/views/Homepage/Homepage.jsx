@@ -6,11 +6,14 @@ import Hamburger from "../../components/Hamburger/Hamburger";
 import Categories from "../Categories/Categories";
 import { Products, categories } from "../../assets/Products";
 import "./Homepage.scss";
+import NewsLetter from "../Newsletter/NewsLetter";
+import CustomerReviews from "../CustomerReviews/CustomerReview";
 const Homepage = () => {
   const [showHeader, setShowHeader] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
   const [mobileHeaderFixed, setMobileHeaderFixed] = useState(false);
   const [showMobileNavItems, setShowMobileNavItems] = useState(false);
+  const [scrollValue, setScrollValue] = useState({});
   const headerSectionRef = useRef(null);
   const popularSectionRef = useRef(null);
 
@@ -186,6 +189,31 @@ const Homepage = () => {
       <div className="categories-section">
         <div className="section-title">Categories</div>
         <Categories categories={categories} />
+      </div>
+      <div className="section-break"></div>
+      <div className="newsletter-section">
+        <NewsLetter />
+      </div>
+      <div className="section-break"></div>
+      <div className="customer-reviews-section">
+        <div className="section-top">
+          <div className="section-title">Customer Reviews</div>
+          <div className="scrollBtns">
+            <button
+              className="scrollLeft"
+              onClick={() => setScrollValue({ left: -380, behavior: "smooth" })}
+            >
+              <img src="/left-arrow.svg" height={30} width={30} />
+            </button>
+            <button
+              className="scrollRight"
+              onClick={() => setScrollValue({ left: 380, behavior: "smooth" })}
+            >
+              <img src="/right-arrow.svg" height={30} width={30} />
+            </button>
+          </div>
+        </div>
+        <CustomerReviews scrollData={scrollValue} />
       </div>
       <div className="section-break"></div>
     </div>

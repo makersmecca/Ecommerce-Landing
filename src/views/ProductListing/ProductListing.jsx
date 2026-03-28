@@ -30,7 +30,7 @@ const ProductListing = ({ Products }) => {
   }, []);
 
   const scroll = (dir) =>
-    listingRef.current.scrollBy({ left: dir * 530, behavior: "smooth" });
+    listingRef.current.scrollBy({ left: dir * 330, behavior: "smooth" });
   return (
     <>
       <div className="products-listing-wrapper">
