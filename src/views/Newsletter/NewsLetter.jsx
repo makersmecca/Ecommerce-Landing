@@ -19,7 +19,7 @@ const NewsLetter = () => {
           <div className="newsletter-subscribe">
             <button>
               Subscribe{" "}
-              <img src="/notification-bell.svg" height={20} width={20} />
+              <img src="icons/notification-bell.svg" height={20} width={20} />
             </button>
           </div>
         </div>

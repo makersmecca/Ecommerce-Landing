@@ -204,13 +204,13 @@ const Homepage = () => {
               className="scrollLeft"
               onClick={() => setScrollValue({ left: -380, behavior: "smooth" })}
             >
-              <img src="/left-arrow.svg" height={30} width={30} />
+              <img src="icons/left-arrow.svg" height={30} width={30} />
             </button>
             <button
               className="scrollRight"
               onClick={() => setScrollValue({ left: 380, behavior: "smooth" })}
             >
-              <img src="/right-arrow.svg" height={30} width={30} />
+              <img src="icons/right-arrow.svg" height={30} width={30} />
             </button>
           </div>
         </div>

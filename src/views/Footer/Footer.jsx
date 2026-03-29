@@ -8,7 +8,7 @@ const Footer = () => {
           VERITY.COM
         </a>
         <div className="brand-address">
-          <img src="/location-pin.svg" alt="" className="address-pin" />
+          <img src="/icons/location-pin.svg" alt="" className="address-pin" />
           <span className="address-text">
             742 Evergreen Terrace, Suite 3B Springfield, IL 62704, USA
           </span>
