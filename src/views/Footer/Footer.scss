@@ -1,0 +1,177 @@
+    .footer-container {
+        background-color: #F0F0F0;
+        padding: 50px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        gap: 100px;
+        height: 100%;
+        justify-content: space-between;
+
+        @media (max-width:400px) {
+            padding: 30px;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        @media (min-width:401px) and (max-width: 970px) {
+            padding: 40px;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        @media (min-width: 971px) and (max-width: 1160px) {
+            gap: 30px;
+            padding: 20px;
+        }
+
+        @media (min-width:1161px) and (max-width: 1350px) {
+            padding: 50px;
+        }
+
+        .branding {
+            display: flex;
+            flex-direction: column;
+            width: auto;
+
+            .brand-name {
+                color: black;
+                font-family: "Special Gothic Expanded One", sans-serif;
+                font-weight: 800;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                text-decoration: none;
+                font-size: 40px;
+                margin-top: 5px;
+
+                @media(max-width: 970px) {
+                    font-size: 30px;
+                }
+
+                .brand-logo-img {
+                    height: 60px;
+                    width: 60px;
+
+                    @media(max-width: 970px) {
+                        height: 40px;
+                        width: 40px;
+                    }
+                }
+            }
+
+            .brand-address {
+                height: 100px;
+                width: 100%;
+                font-size: 18px;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+                .address-pin {
+                    height: 40px;
+                    width: 40px;
+                    opacity: 0.7;
+                }
+
+                .address-text {
+                    font-size: 20px;
+                    font-weight: 600;
+                    max-width: 415px;
+                    color: #626262;
+                }
+            }
+
+            .social-media-container {
+                display: flex;
+                gap: 10px;
+                height: 60px;
+                min-width: 180px;
+                align-items: center;
+
+                .social-btn {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 27px;
+                    width: 27px;
+                    background-color: #d6d6d6;
+                    border-radius: 5px;
+                    padding: 4px;
+                    cursor: pointer;
+
+                    &:hover {
+                        img {
+                            scale: 0.9;
+                            transition: scale ease-in-out 0.2s;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        .hyperlink-columns {
+            display: flex;
+            gap: 90px;
+
+            @media (max-width: 450px) {
+                gap: 30px;
+            }
+
+            .first-column,
+            .second-column {
+                display: flex;
+                flex-direction: row;
+                gap: 90px;
+
+                @media(max-width: 1300px) {
+
+                    flex-direction: column;
+                    gap: 20px;
+                }
+            }
+        }
+
+
+
+        .footer-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px 0px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+            @media(max-width: 1300px) {
+                padding: 0px;
+                gap: 10px;
+                flex: none;
+            }
+
+
+            .row-header {
+                font-size: 22px;
+                font-weight: 600;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                color: black;
+                text-wrap: nowrap;
+
+                @media (max-width:400px) {
+                    font-size: 18px;
+                }
+            }
+
+            .row-links {
+                text-decoration: none;
+                color: #525252;
+                font-size: 20px;
+                text-wrap: nowrap;
+
+                @media (max-width:450px) {
+                    font-size: 16px;
+                }
+            }
+        }
+    }

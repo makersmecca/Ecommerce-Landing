@@ -8,6 +8,7 @@ import { Products, categories } from "../../assets/Products";
 import "./Homepage.scss";
 import NewsLetter from "../Newsletter/NewsLetter";
 import CustomerReviews from "../CustomerReviews/CustomerReview";
+import Footer from "../Footer/Footer";
 const Homepage = () => {
   const [showHeader, setShowHeader] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
@@ -118,13 +119,13 @@ const Homepage = () => {
             </ul>
             <div className="social-media-container">
               <div className="social-btn">
-                <img src="/social-icons/igIcon.svg" />
+                <img src="/social-icons/igIcon.svg" height={25} width={25} />
               </div>
               <div className="social-btn">
                 <img src="/social-icons/xIcon.svg" height={25} width={25} />
               </div>
               <div className="social-btn">
-                <img src="/social-icons/fbIcon.svg" />
+                <img src="/social-icons/fbIcon.svg" height={25} width={25} />
               </div>
             </div>
           </div>
@@ -215,7 +216,9 @@ const Homepage = () => {
         </div>
         <CustomerReviews scrollData={scrollValue} />
       </div>
-      <div className="section-break"></div>
+      <div className="homepage-footer">
+        <Footer />
+      </div>
     </div>
   );
 };
