@@ -1,0 +1,18 @@
+.modal {
+    width: 50vw;
+    max-width: 900px !important;
+
+    .cart-modal-header {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .cart-modal-content {
+        .item-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}

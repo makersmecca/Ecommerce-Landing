@@ -218,6 +218,9 @@ const Homepage = () => {
       </div>
       <div className="homepage-footer">
         <Footer />
+        <div className="bottom-section">
+          <div className="copyright">© Verity.com, All rights reserved</div>
+        </div>
       </div>
     </div>
   );

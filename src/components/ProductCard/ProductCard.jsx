@@ -1,6 +1,7 @@
 import "./ProductCard.scss";
-import { useState } from "react";
+import { useCart } from "../../context/CartContext";
 const ProductCard = ({
+  id,
   image = "",
   title = "",
   price = "",
@@ -9,6 +10,7 @@ const ProductCard = ({
   discount = "",
   currency = "$",
   rating = 0,
+  category = "",
 }) => {
   const renderStars = () => {
     const starCount = 5;
@@ -30,7 +32,8 @@ const ProductCard = ({
     );
   };
 
-  const [quantityCount, setQuantityCount] = useState(0);
+  const { cart, dispatch } = useCart();
+  const quantityCount = cart.find((i) => i.id === id)?.qty ?? 0;
 
   return (
     <div className="product-card">
@@ -45,7 +48,7 @@ const ProductCard = ({
         {quantityCount > 0 && (
           <button
             className="remove-btn"
-            onClick={() => setQuantityCount((prev) => prev - 1)}
+            onClick={() => dispatch({ type: "REMOVE", id })}
           >
             <img src="/icons/minus.svg" height={40} width={20} />
           </button>
@@ -55,7 +58,20 @@ const ProductCard = ({
         )}
         <button
           className="add-btn"
-          onClick={() => setQuantityCount((prev) => prev + 1)}
+          onClick={() =>
+            dispatch({
+              type: "ADD",
+              item: {
+                id,
+                title,
+                price,
+                originalPrice,
+                category,
+                image,
+                discount,
+              },
+            })
+          }
         >
           <img src="/icons/plus.svg" height={30} width={30} />
         </button>

@@ -1,0 +1,19 @@
+.cart-section {
+    position: relative;
+
+    .cart-count {
+        position: absolute;
+        background-color: black;
+        color: white;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        align-content: center;
+        border-radius: 50%;
+        font-size: 12px;
+        padding-top: 1.5px;
+        padding-left: 0.5px;
+        top: 0px;
+        right: 0px;
+    }
+}
