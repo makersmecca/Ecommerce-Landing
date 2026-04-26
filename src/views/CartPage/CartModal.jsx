@@ -1,56 +1,85 @@
 import "./CartModal.scss";
 import { useCart } from "../../context/CartContext";
 import CustomModal from "../../components/CustomModal/CustomModal";
+import { useEffect, useState } from "react";
 const CartPage = ({ isOpen, onClose }) => {
-  const { cart, dispatch } = useCart();
+  const { cart, dispatch, total } = useCart();
 
   const renderCartContents = () => {
     return (
       <div className="cart-modal-content">
-        {cart.map((item) => (
-          <div className="cart-item" key={item.id}>
-            <div className="item-details">
-              <div className="image-section">
-                <img src={item.image} height={80} width={80} />
-              </div>
-              <div className="details-section">
-                <div className="item-name">{item.title}</div>
-              </div>
-              <div className="update-cart-section">
-                <div
-                  className={`add-to-cart ${item.qty === 0 && "noCount"}`}
-                >
-                  {item.qty > 0 && (
+        {cart.length === 0 && (
+          <div className="no-cart-item">No items in cart</div>
+        )}
+        <div className="cart-items-list">
+          {cart.map((item) => (
+            <div className="cart-item" key={item.id}>
+              <div className="item-details">
+                <div className="image-section">
+                  <div className="item-discount">{item.discount}% Off</div>
+                  <img src={item.image} height={80} width={80} />
+                </div>
+                <div className="details-section">
+                  <div className="item-name">{item.title}</div>
+                </div>
+                <div className="update-cart-section">
+                  <div className={`add-to-cart ${item.qty === 0 && "noCount"}`}>
+                    {item.qty > 0 && (
+                      <button
+                        className="remove-btn"
+                        onClick={() =>
+                          dispatch({ type: "REMOVE", id: item.id })
+                        }
+                      >
+                        <img src="/icons/minus.svg" />
+                      </button>
+                    )}
+                    {item.qty > 0 && (
+                      <span className="quantity-count">{item.qty}</span>
+                    )}
                     <button
-                      className="remove-btn"
-                      onClick={() => dispatch({ type: "REMOVE", id: item.id })}
+                      className="add-btn"
+                      onClick={() =>
+                        dispatch({
+                          type: "ADD",
+                          item: { ...item },
+                        })
+                      }
                     >
-                      <img src="/icons/minus.svg" height={40} width={20} />
+                      <img src="/icons/plus.svg" />
                     </button>
-                  )}
-                  {item.qty > 0 && (
-                    <span className="quantity-count">{item.qty}</span>
-                  )}
+                  </div>
+                  <div className="price-section">
+                    <div className="item-original-price">
+                      ${item.originalPrice}
+                    </div>
+                    <div className="item-price">${item.price}</div>
+                  </div>
+                </div>
+                <div className="delete-cart-section">
                   <button
-                    className="add-btn"
-                    onClick={() =>
-                      dispatch({
-                        type: "ADD",
-                        item: { ...item },
-                      })
-                    }
+                    className="delete-item-btn"
+                    onClick={() => dispatch({ type: "DROP", id: item.id })}
                   >
-                    <img src="/icons/plus.svg" height={30} width={30} />
+                    <img src="/icons/delete-icon.svg" />
                   </button>
                 </div>
-                <div className="item-qty">{item.qty}</div>
-                <div className="item-price">{item.price}</div>
-                <div className="item-original-price">{item.originalPrice}</div>
-                <div className="item-discount">{item.discount}</div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <div className="total-cost">
+          <div>Total:</div>
+          <div>${total}</div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderFooterContent = () => {
+    return (
+      <div className="cart-modal-footer">
+        <button className="checkout-btn">Checkout</button>
       </div>
     );
   };
@@ -60,6 +89,7 @@ const CartPage = ({ isOpen, onClose }) => {
       <CustomModal
         isOpen={isOpen}
         onClose={onClose}
+        customClass="cart-modal"
         heading={
           <>
             <div className="cart-modal-header">
@@ -68,7 +98,8 @@ const CartPage = ({ isOpen, onClose }) => {
             </div>
           </>
         }
-        body={<>{renderCartContents()}</>}
+        body={renderCartContents()}
+        footer={renderFooterContent()}
       />
     </>
   );

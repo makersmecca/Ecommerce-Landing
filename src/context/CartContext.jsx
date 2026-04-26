@@ -17,6 +17,10 @@ const cartReducer = (state, action) => {
           item.id === action.id ? { ...item, qty: item.qty - 1 } : item,
         )
         .filter((item) => item.qty > 0);
+
+    case "DROP":
+      return state.filter((item) => item.id !== action.id);
+
     default:
       return state;
   }
@@ -24,8 +28,12 @@ const cartReducer = (state, action) => {
 
 export const CartProvider = ({ children }) => {
   const [cart, dispatch] = useReducer(cartReducer, []);
+  const total = cart.reduce(
+    (sum, item) => sum + parseFloat(item.price) * item.qty,
+    0,
+  );
   return (
-    <CartContext.Provider value={{ cart, dispatch }}>
+    <CartContext.Provider value={{ cart, dispatch, total }}>
       {children}
     </CartContext.Provider>
   );
