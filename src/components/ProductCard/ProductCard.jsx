@@ -1,6 +1,7 @@
 import "./ProductCard.scss";
-
+import { useCart } from "../../context/CartContext";
 const ProductCard = ({
+  id,
   image = "",
   title = "",
   price = "",
@@ -9,6 +10,7 @@ const ProductCard = ({
   discount = "",
   currency = "$",
   rating = 0,
+  category = "",
 }) => {
   const renderStars = () => {
     const starCount = 5;
@@ -30,6 +32,9 @@ const ProductCard = ({
     );
   };
 
+  const { cart, dispatch } = useCart();
+  const quantityCount = cart.find((i) => i.id === id)?.qty ?? 0;
+
   return (
     <div className="product-card">
       <div className="product-card__image-wrapper">
@@ -38,6 +43,39 @@ const ProductCard = ({
         <img src={image} alt={title} />
       </div>
       {discount && <span className="discount">{discount}% off</span>}
+
+      <div className={`add-to-cart ${quantityCount === 0 && "noCount"}`}>
+        {quantityCount > 0 && (
+          <button
+            className="remove-btn"
+            onClick={() => dispatch({ type: "REMOVE", id })}
+          >
+            <img src="/icons/minus.svg" height={40} width={20} />
+          </button>
+        )}
+        {quantityCount > 0 && (
+          <span className="quantity-count">{quantityCount}</span>
+        )}
+        <button
+          className="add-btn"
+          onClick={() =>
+            dispatch({
+              type: "ADD",
+              item: {
+                id,
+                title,
+                price,
+                originalPrice,
+                category,
+                image,
+                discount,
+              },
+            })
+          }
+        >
+          <img src="/icons/plus.svg" height={30} width={30} />
+        </button>
+      </div>
 
       <div className="product-card__info">
         <div className="product-card__details">

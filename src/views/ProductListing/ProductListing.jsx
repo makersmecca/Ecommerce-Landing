@@ -43,6 +43,7 @@ const ProductListing = ({ Products }) => {
           {Products.productsList.map((product) => (
             <div key={product.productId} className="listing-card">
               <ProductCard
+                id={product.productId}
                 title={product.productName}
                 price={product.price}
                 originalPrice={product.originalPrice}
@@ -54,6 +55,7 @@ const ProductListing = ({ Products }) => {
                     100,
                 ).toString()}
                 rating={product.rating}
+                category={product.category}
               />
             </div>
           ))}
