@@ -47,3 +47,5 @@ npm run dev
 ## Cart State
 
 Cart is managed globally via `CartContext` using `useReducer`. Supports `ADD`, `REMOVE` (decrement), and `DROP` (delete) actions. Total price is computed and exposed via context.
+
+<img src="https://github.com/makersmecca/DiscordFileStore/blob/filestore/src/footercat.svg"/>
