@@ -5,6 +5,37 @@
   overflow: hidden;
   height: 100%;
 
+  .section-title {
+    width: 100%;
+    max-width: 1920px;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Special Gothic Expanded One", sans-serif;
+    font-size: 52px;
+    margin-bottom: 40px;
+
+    @media (max-width: 767px) {
+      font-size: 40px;
+      text-align: center;
+    }
+  }
+
+  .section-break {
+    border: 1px solid black;
+    width: 98vw;
+    max-width: 1920px;
+    justify-self: center;
+    margin: 50px 0px;
+    opacity: 0.2;
+  }
+
+  @media (max-width: 767px) {
+    margin-bottom: 50px;
+  }
+
+
   .header-section {
     width: 100%;
     background-color: black;
@@ -24,6 +55,10 @@
         height: 55px;
         min-width: 180px;
         align-items: center;
+
+        @media (max-width: 768px) {
+          display: none;
+        }
 
         .social-btn {
           display: flex;
@@ -55,11 +90,23 @@
         color: white;
         font-family: sans-serif;
 
+        @media(max-width: 768px) {
+          margin: 0px;
+          flex-direction: column;
+          align-items: flex-start;
+          padding-left: 10px;
+          font-size: 14px;
+        }
+
         a {
           margin-left: 5px;
           text-decoration: none;
           color: white;
           text-decoration: underline;
+
+          @media(max-width: 768px) {
+            margin: 0px;
+          }
         }
       }
 
@@ -67,6 +114,10 @@
         display: flex;
         justify-content: center;
         min-width: 80px;
+
+        @media (max-width: 768px) {
+          min-width: 56px;
+        }
 
         .close-header-btn {
           background: none;
@@ -76,6 +127,139 @@
       }
     }
   }
+
+  .mobile-header-section {
+    background-color: white;
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.12);
+
+    &.mobile-header-fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .brand-name {
+      color: black;
+      background-color: white;
+      font-family: "Special Gothic Expanded One", sans-serif;
+      padding-left: 6vw;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+
+      @media (max-width: 768px) {
+        padding-left: 8px;
+      }
+
+      font-size: 26px;
+
+      .brand-logo-img {
+        height: 40px;
+        width: 40px;
+      }
+    }
+
+    .hamburger-menu-container {
+      margin-top: 2px;
+
+      @media (max-width:768px) {
+        padding-right: 15px;
+      }
+
+      @media(min-width:769px) and (max-width: 1024px) {
+        padding-right: 24px;
+      }
+    }
+  }
+
+  .mobile-nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 199;
+  }
+
+  .mobile-top-nav-items {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 45vw;
+    max-width: 320px;
+    background: white;
+    z-index: 200;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
+
+    &.show {
+      transform: translateX(0);
+    }
+
+    &.hide {
+      transform: translateX(100%);
+    }
+
+    .close-mobile-nav {
+      position: fixed;
+      top: 12px;
+      right: 8px;
+      background: none;
+      border: none;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 18px;
+      font-family: sans-serif;
+      padding: 50px 24px 24px;
+    }
+
+    .social-media-container {
+      display: flex;
+      justify-content: flex-start;
+      gap: 2%;
+      height: 55px;
+      width: auto;
+      min-width: 180px;
+      align-items: center;
+      position: fixed;
+      bottom: 0px;
+      padding: 0px 20px;
+
+      .social-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 27px;
+        width: 27px;
+        // background-color: #d6d6d6;
+        border-radius: 5px;
+        padding: 4px;
+        cursor: pointer;
+
+        &:hover {
+          img {
+            scale: 0.9;
+            transition: scale ease-in-out 0.2s;
+          }
+        }
+      }
+    }
+  }
+
 
   .navbar-section {
     margin-top: 30px;
@@ -88,8 +272,13 @@
     width: 100%;
     max-width: 1920px;
     justify-self: center;
+    background-color: #f0f0f0;
 
-    @media(max-width:1024px) {
+    @media (max-width: 768px) {
+      height: 760px;
+    }
+
+    @media (min-width: 769px) and (max-width:1024px) {
       height: 630px;
       display: flex;
       align-items: flex-end;
@@ -105,14 +294,28 @@
       justify-content: flex-end;
 
       img {
-        width: 100%;
-        max-width: 1440px;
-        max-height: 663px;
-        padding-right: 20px;
+        height: 622px;
+        width: auto;
+        padding-right: 3vw;
 
-        @media(max-width: 1024px) {
+        @media (max-width: 768px) {
+          position: absolute;
+          opacity: 0.5;
+          right: -230px;
+          bottom: 0;
+          height: 100%;
           width: auto;
           padding: 0px;
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+          position: absolute;
+          right: -100px;
+          bottom: 0;
+          height: 100%;
+          width: auto;
+          padding-right: 110px;
+          opacity: 0.7;
         }
       }
     }
@@ -120,16 +323,21 @@
     .hero-content {
       position: absolute;
       top: 100px;
+      left: 5vw;
 
-      @media (max-width:1290px) {
+      @media (max-width: 768px) {
+        left: 0vw;
+        top: 0px;
+      }
+
+      @media (min-width:769px) and (max-width:1290px) {
         bottom: 0px;
         height: 100%;
         top: auto;
         display: flex;
         flex-direction: column;
+        left: 4vw;
       }
-
-      left: 5vw;
 
       .hero-heading {
         font-family: "Special Gothic Expanded One", sans-serif;
@@ -139,7 +347,14 @@
         letter-spacing: 1px;
         padding-left: 20px;
 
-        @media(max-width:1024px) {
+        @media (max-width: 768px) {
+          font-size: 40px;
+          margin-top: 20px;
+          padding-right: 20px;
+          width: 90vw;
+        }
+
+        @media(min-width: 769px) and (max-width:1024px) {
           font-size: 42px;
           margin-top: 40px;
         }
@@ -154,11 +369,29 @@
         font-size: 20px;
         margin-top: 12px;
         padding-left: 20px;
+
+        @media (max-width: 768px) {
+          padding-right: 20px;
+          width: 90vw;
+        }
       }
 
       .cta-btn {
         margin-top: 50px;
         padding-left: 20px;
+
+        @media (max-width:500px) {
+          display: flex;
+          justify-content: center;
+          padding: 0px;
+        }
+
+        @media (min-width:500px) and (max-width: 768px) {
+          margin-top: 25px;
+          padding: 0px;
+          width: 100vw;
+          padding-left: 20px;
+        }
 
         button {
           width: 210px;
@@ -169,6 +402,12 @@
           border-radius: 62px;
           font-size: 16px;
           cursor: pointer;
+
+          @media (max-width: 500px) {
+            width: 80%;
+            height: 44px;
+            padding: 0px;
+          }
         }
       }
 
@@ -178,7 +417,14 @@
         width: 617px;
         margin-top: 24px;
 
-        @media(max-width:1024px) {
+        @media (max-width: 500px) {
+          flex-direction: column;
+          width: 100vw;
+          justify-self: center;
+          align-items: center;
+        }
+
+        @media (min-width: 500px) and (max-width:1024px) {
           flex-direction: column;
           max-width: 190px;
         }
@@ -186,7 +432,9 @@
         @media (min-width:1025px) and (max-width:1290px) {
           width: 500px;
           margin-top: auto;
-          margin-bottom: 12px;
+          margin-bottom: 80px;
+          background-color: #d1d1d129;
+          border-radius: 10px;
         }
 
         .stat {
@@ -196,6 +444,11 @@
           flex-direction: column;
           align-items: flex-start;
           border-right: 1px solid #d1d1d1;
+
+          @media (max-width: 500px) {
+            width: 100%;
+            align-items: center;
+          }
 
           @media(max-width:1024px) {
             border-bottom: 1px solid #d1d1d1;
@@ -214,6 +467,10 @@
             font-style: normal;
             font-size: 48px;
 
+            @media (max-width: 400px) {
+              font-size: 40px;
+            }
+
             @media (min-width:1025px) and (max-width:1290px) {
               font-size: 36px;
             }
@@ -226,28 +483,109 @@
   .products-section {
     margin-top: 50px;
     width: 100vw;
+  }
 
-    .section-title {
+  .categories-section {
+    width: 100vw;
+  }
+
+  .newsletter-section {
+    width: 100vw;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+
+    @media (max-width:768px) {
+      height: 300px;
+    }
+  }
+
+  .customer-reviews-section {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+
+    .section-top {
       width: 100%;
-      max-width: 1920px;
-      justify-self: center;
+      max-width: 1240px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      font-family: "Special Gothic Expanded One", sans-serif;
-      font-size: 52px;
       margin-bottom: 40px;
+
+
+
+      .scrollBtns {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        @media (max-width: 500px) {
+          gap: 0px;
+          padding-right: 15px;
+        }
+
+        button {
+          border: none;
+          background: none;
+          cursor: pointer;
+          border-radius: 50%;
+          height: 60px;
+          width: 60px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &:hover {
+            background-color: antiquewhite;
+          }
+        }
+      }
+
+      .section-title {
+        justify-content: flex-start;
+        margin-bottom: 0px;
+        text-align: left;
+
+        @media (max-width: 1300px) {
+          padding-left: 30px;
+        }
+
+        @media (max-width: 400px) {
+          font-size: 32px;
+        }
+      }
     }
 
-    .section-break {
-      border: 1px solid black;
-      width: 98vw;
-      max-width: 1920px;
-      justify-self: center;
-      margin: 50px 0px;
-      opacity: 0.2;
+  }
+
+  .homepage-footer {
+    height: 400px;
+    width: 100vw;
+    max-width: 1920px;
+    background-color: #F0F0F0;
+    position: relative;
+
+    @media(max-width: 768px) {
+      height: 600px;
+      padding-bottom: 0px;
     }
 
+    @media (min-width:769px) and (max-width: 970px) {
+      height: 600px;
+      padding-bottom: 50px;
+    }
 
+    @media (min-width:971px) and (max-width: 1024px) {
+      height: 350px;
+      padding-bottom: 50px;
+    }
+
+    .bottom-section {
+      position: absolute;
+      bottom: 5px;
+      left: 20px;
+    }
   }
 }

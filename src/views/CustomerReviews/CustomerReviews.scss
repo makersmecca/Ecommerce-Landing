@@ -1,0 +1,25 @@
+.reviews-wrapper {
+    display: flex;
+    gap: 20px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    width: 100%;
+    max-width: 1920px;
+    padding: 0 10px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+
+    @media (max-width:1300px) {
+        width: 95vw;
+        padding: 0px;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &>* {
+        flex-shrink: 0;
+    }
+}

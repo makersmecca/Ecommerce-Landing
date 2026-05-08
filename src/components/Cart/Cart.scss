@@ -1,0 +1,35 @@
+.cart-section {
+    position: relative;
+
+    .cart-count {
+        position: absolute;
+        background-color: black;
+        color: white;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        align-content: center;
+        border-radius: 50%;
+        font-size: 12px;
+        padding-top: 1.5px;
+        padding-left: 0.5px;
+        top: 0px;
+        right: 0px;
+
+        @media (max-width: 499px) {
+            font-size: 14px;
+            height: 20px;
+            top: -25%;
+            left: 60%;
+        }
+
+        @media (min-width: 500px) and (max-width: 1024px) {
+            font-size: 16px;
+            height: 25px;
+            width: 25px;
+            top: -35%;
+            left: 70%;
+
+        }
+    }
+}

@@ -1,22 +1,43 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import MobileNavbar from "../../components/MobileNavbar/MobileNavbar";
 import ProductListing from "../ProductListing/ProductListing";
-import { Products } from "../../assets/Products";
+import Hamburger from "../../components/Hamburger/Hamburger";
+import Categories from "../Categories/Categories";
+import { Products, categories } from "../../assets/Products";
 import "./Homepage.scss";
+import NewsLetter from "../Newsletter/NewsLetter";
+import CustomerReviews from "../CustomerReviews/CustomerReview";
+import Footer from "../Footer/Footer";
 const Homepage = () => {
   const [showHeader, setShowHeader] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+  const [mobileHeaderFixed, setMobileHeaderFixed] = useState(false);
+  const [showMobileNavItems, setShowMobileNavItems] = useState(false);
+  const [scrollValue, setScrollValue] = useState({});
+  const headerSectionRef = useRef(null);
+  const popularSectionRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 1024);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    if (!isMobile) return;
+    const handleScroll = () => {
+      const headerHeight = headerSectionRef.current?.offsetHeight ?? 0;
+      setMobileHeaderFixed(window.scrollY >= headerHeight);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isMobile]);
+
   const popularProducts = useMemo(
     () => ({
       productsList: Products.flatMap((cat) =>
-        cat.productsList.filter((p) => p.badge !== "New!"),
+        cat.productsList.filter((p) => p.badge !== "New!" && p.rating >= 4.0),
       ).sort(() => Math.random() - 0.5),
     }),
     [],
@@ -31,7 +52,8 @@ const Homepage = () => {
   );
   return (
     <div className="homepage-container">
-      <div className="header-section">
+      {isMobile && <MobileNavbar />}
+      <div className="header-section" ref={headerSectionRef}>
         {showHeader && (
           <div className="header-top">
             <div className="social-media-container">
@@ -60,16 +82,64 @@ const Homepage = () => {
           </div>
         )}
       </div>
-      {isMobile ? (
-        <MobileNavbar />
-      ) : (
+      {isMobile && (
+        <>
+          <div
+            className={`mobile-header-section${mobileHeaderFixed ? " mobile-header-fixed" : ""}`}
+          >
+            <a href="/" className="brand-name">
+              <img
+                src="/Logo.png"
+                className="brand-logo-img"
+                alt="brand logo"
+              />
+              VERITY.COM
+            </a>
+            <Hamburger toggleMobileNavItems={setShowMobileNavItems} />
+          </div>
+          {showMobileNavItems && (
+            <div
+              className="mobile-nav-overlay"
+              onClick={() => setShowMobileNavItems(false)}
+            />
+          )}
+          <div
+            className={`mobile-top-nav-items ${showMobileNavItems ? "show" : "hide"}`}
+          >
+            <button
+              className="close-mobile-nav"
+              onClick={() => setShowMobileNavItems(false)}
+            >
+              <img src="/icons/closeIcon-black.svg" height={30} width={30} />
+            </button>
+            <ul>
+              <li>Shop</li>
+              <li>On Sale</li>
+              <li>New Arrivals</li>
+            </ul>
+            <div className="social-media-container">
+              <div className="social-btn">
+                <img src="/social-icons/igIcon.svg" height={25} width={25} />
+              </div>
+              <div className="social-btn">
+                <img src="/social-icons/xIcon.svg" height={25} width={25} />
+              </div>
+              <div className="social-btn">
+                <img src="/social-icons/fbIcon.svg" height={25} width={25} />
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+      {isMobile && mobileHeaderFixed && <div style={{ height: 44 }} />}
+      {!isMobile && (
         <div className="navbar-section">
           <Navbar />
         </div>
       )}
       <div className="hero-section">
         <div className="hero-img">
-          <img src="/heroImg.png" alt="" />
+          <img src="/heroImg2.png" alt="" />
         </div>
         <div className="hero-content">
           <div className="hero-heading">
@@ -81,7 +151,17 @@ const Homepage = () => {
             Crafted for comfort, designed to stand out.
           </div>
           <div className="cta-btn">
-            <button>Shop now</button>
+            <button
+              onClick={() => {
+                const y =
+                  popularSectionRef.current?.getBoundingClientRect().top +
+                  window.scrollY -
+                  (isMobile ? 80 : 0);
+                window.scrollTo({ top: y, behavior: "smooth" });
+              }}
+            >
+              Shop now
+            </button>
           </div>
           <div className="hero-stats-sections">
             <div className="stat">
@@ -99,7 +179,7 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-      <div className="products-section">
+      <div className="products-section" ref={popularSectionRef}>
         <div className="section-title">Popular</div>
         <ProductListing Products={popularProducts} />
         <div className="section-break"></div>
@@ -107,7 +187,41 @@ const Homepage = () => {
         <ProductListing Products={newLaunches} />
         <div className="section-break"></div>
       </div>
-      <div className="categories-section"></div>
+      <div className="categories-section">
+        <div className="section-title">Categories</div>
+        <Categories categories={categories} />
+      </div>
+      <div className="section-break"></div>
+      <div className="newsletter-section">
+        <NewsLetter />
+      </div>
+      <div className="section-break"></div>
+      <div className="customer-reviews-section">
+        <div className="section-top">
+          <div className="section-title">Customer Reviews</div>
+          <div className="scrollBtns">
+            <button
+              className="scrollLeft"
+              onClick={() => setScrollValue({ left: -380, behavior: "smooth" })}
+            >
+              <img src="icons/left-arrow.svg" height={30} width={30} />
+            </button>
+            <button
+              className="scrollRight"
+              onClick={() => setScrollValue({ left: 380, behavior: "smooth" })}
+            >
+              <img src="icons/right-arrow.svg" height={30} width={30} />
+            </button>
+          </div>
+        </div>
+        <CustomerReviews scrollData={scrollValue} />
+      </div>
+      <div className="homepage-footer">
+        <Footer />
+        <div className="bottom-section">
+          <div className="copyright">© Verity.com, All rights reserved</div>
+        </div>
+      </div>
     </div>
   );
 };

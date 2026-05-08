@@ -19,14 +19,25 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
             opacity: 0.7;
 
+            @media (max-width: 767px) {
+                height: 120px;
+                width: 45px;
+                opacity: 0.5;
+                padding: 0px;
+            }
+
             img {
                 height: 44px;
                 width: 44px;
-                opacity: 0.5;
+                opacity: 0.7;
             }
 
             &.left {
                 left: 14px;
+
+                @media (max-width: 767px) {
+                    left: 5px;
+                }
 
                 img {
                     transform: rotate(180deg);
@@ -35,6 +46,10 @@
 
             &.right {
                 right: 16px;
+
+                @media (max-width: 767px) {
+                    right: 5px;
+                }
             }
 
             &:hover {
@@ -47,8 +62,10 @@
             gap: 30px;
             overflow-x: scroll;
             overflow-y: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
             scrollbar-width: none;
-            height: 400px;
+            height: 420px;
             padding: 0 10px;
             cursor: pointer;
 
@@ -58,11 +75,11 @@
 
             .listing-card {
                 border-radius: 8px;
-                height: 300px;
+                height: 305px;
                 width: 300px;
                 flex-shrink: 0;
                 background-color: #f0f0f0;
-                box-shadow: 10px 86px 20px -10px #534e4e;
+                box-shadow: 10px 102px 20px -10px #534e4e;
             }
         }
     }
@@ -88,6 +105,7 @@
             justify-content: center;
             align-items: center;
             background-color: white;
+            border: 2px solid black;
 
             &:hover {
                 background-color: #f0f0f0;

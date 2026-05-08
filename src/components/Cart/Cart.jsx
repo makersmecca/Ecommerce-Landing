@@ -1,9 +1,24 @@
 import "./Cart.scss";
+import { useEffect, useState } from "react";
+import { useCart } from "../../context/CartContext";
+import CartPage from "../../views/CartPage/CartModal";
+
 const Cart = () => {
+  const { cart } = useCart();
+
+  const [cartCount, setCartCount] = useState(0);
+  const [showCartModal, setShowCartModal] = useState(false);
+
+  useEffect(() => {
+    setCartCount(cart.reduce((acc, item) => acc + item.qty, 0));
+  }, [cart]);
+
   return (
     <>
-      <div className="cart-section">
-        <img src="/cart.svg" height={26} width={26} />
+      <CartPage isOpen={showCartModal} onClose={() => setShowCartModal(false)} />
+      <div className="cart-section" onClick={() => setShowCartModal(true)}>
+        <div className="cart-count">{cartCount}</div>
+        <img src="/cart.svg" />
       </div>
     </>
   );

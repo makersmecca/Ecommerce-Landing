@@ -1,11 +1,15 @@
 import "./Navbar.scss";
 import Cart from "../Cart/Cart";
 import UserProfile from "../Login/UserProfile";
+import Favourites from "../favourites/Favourites";
 const Navbar = () => {
   return (
     <div className="navbar-container">
       <div className="ecom-logo">
-        <a href="/">ECOMM.COM</a>
+        <a href="/">
+          <img src="/Logo.png" className="brand-logo-img" alt="brand logo" />
+          <span className="brand-name">VERITY.COM</span>
+        </a>
       </div>
       <div className="navItems">
         <ul>
@@ -32,6 +36,7 @@ const Navbar = () => {
       <div className="user-section">
         <Cart />
         <UserProfile />
+        <Favourites />
       </div>
     </div>
   );

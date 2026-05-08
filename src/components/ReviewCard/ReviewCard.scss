@@ -1,0 +1,22 @@
+.review-card {
+    height: 200px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border-radius: 25px;
+    position: relative;
+    padding: 30px;
+
+    .customer-name {
+        font-size: 22px;
+        font-weight: 600;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .customer-review {
+        font-size: 20px;
+    }
+}

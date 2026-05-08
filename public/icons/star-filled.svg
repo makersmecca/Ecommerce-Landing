@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<svg fill="#FFD700" width="800px" height="800px" viewBox="0 0 32 32" id="Outlined" xmlns="http://www.w3.org/2000/svg">
+<title/>
+<g id="Fill">
+<path d="M16,2.5 C16.4,2.5 16.7,2.7 16.85,3.1L19.9,12.1 L29.4,12.1 C29.85,12.1 30.05,12.7 29.7,12.95 L22.1,18.4 L25.15,27.4 C25.3,27.85 24.8,28.25 24.4,27.95 L16,22.1 L7.6,27.95 C7.2,28.25 6.7,27.85 6.85,27.4 L9.9,18.4 L2.3,12.95 C1.95,12.7 2.15,12.1 2.6,12.1 L12.1,12.1 L15.15,3.1 C15.3,2.7 15.6,2.5 16,2.5 Z" stroke="#FFD700" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+</svg>

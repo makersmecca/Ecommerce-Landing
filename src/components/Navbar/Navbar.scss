@@ -15,8 +15,18 @@
   .ecom-logo {
     width: auto;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    .brand-logo-img {
+      height: 50px;
+      width: 50px;
+    }
 
     a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       text-decoration: none;
       color: black;
       font-family: "Special Gothic Expanded One", sans-serif;
@@ -68,6 +78,7 @@
       z-index: 10;
       top: 12px;
       left: 15px;
+      opacity: 0.4;
     }
   }
 
@@ -76,7 +87,8 @@
     gap: 8px;
 
     .cart-section,
-    .profile-section {
+    .profile-section,
+    .favourites-section {
       border-radius: 50px;
       cursor: pointer;
       height: 44px;
@@ -84,10 +96,16 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
+      img {
+        height: 26px;
+        width: 26px;
+      }
     }
 
     .cart-section:hover,
-    .profile-section:hover {
+    .profile-section:hover,
+    .favourites-section:hover {
       background-color: #f0f0f0;
     }
   }

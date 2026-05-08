@@ -1,0 +1,89 @@
+.newsletter-wrapper {
+    width: 100%;
+    max-width: 1240px;
+    height: 100%;
+    padding: 0px 30px;
+
+    .newsletter-container-box {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 16px;
+        padding: 0px 55px;
+        height: 100%;
+        align-items: center;
+        background-color: black;
+        color: white;
+        border-radius: 40px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            gap: 30px;
+            padding: 0px 30px;
+            justify-content: center;
+        }
+
+        .newsletter-text {
+            font-size: 40px;
+            font-family: "Special Gothic Expanded One", sans-serif;
+            max-width: 600px;
+
+            @media (min-width:556px) and (max-width: 950px) {
+                font-size: 30px;
+            }
+
+            @media (max-width:555px) {
+                font-size: 20px;
+            }
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 350px;
+            gap: 16px;
+
+            .newsletter-email-input {
+                width: 100%;
+
+                input {
+                    width: 310px;
+                    padding: 0px 20px;
+                    border: none;
+                    height: 60px;
+                    border-radius: 60px;
+                    font-size: 16px;
+
+                    @media (max-width: 390px) {
+                        width: 85%;
+                    }
+                }
+            }
+
+            .newsletter-subscribe {
+                width: 100%;
+
+                button {
+                    width: 100%;
+                    height: 60px;
+                    border-radius: 60px;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 16px;
+                    font-weight: 600;
+                    letter-spacing: 2px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 20px;
+                    color: black;
+
+                    &:hover {
+                        background-color: hwb(0 100% 0% / 0.774);
+                    }
+                }
+            }
+        }
+    }
+}
