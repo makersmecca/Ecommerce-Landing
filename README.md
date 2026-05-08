@@ -2,6 +2,8 @@
 
 An e-commerce landing page built with React 19 and Vite. Features product browsing by category, a favourites list, a cart with quantity management, and a newsletter section.
 
+![Halo UI](https://github.com/makersmecca/Ecommerce-Landing/blob/master/eCom%20Landing.png)
+
 ## Tech Stack
 
 - React 19 + React Router v7
