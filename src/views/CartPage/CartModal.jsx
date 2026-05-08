@@ -17,7 +17,7 @@ const CartPage = ({ isOpen, onClose }) => {
               <div className="item-details">
                 <div className="image-section">
                   <div className="item-discount">{item.discount}% Off</div>
-                  <img src={item.image} height={80} width={80} />
+                  <img src={item.image} />
                 </div>
                 <div className="details-section">
                   <div className="item-name">{item.title}</div>
@@ -79,7 +79,12 @@ const CartPage = ({ isOpen, onClose }) => {
   const renderFooterContent = () => {
     return (
       <div className="cart-modal-footer">
-        <button className="checkout-btn">Checkout</button>
+        <button
+          className={`checkout-btn ${total === 0 && "btn-disabled"}`}
+          disabled={total === 0}
+        >
+          Checkout
+        </button>
       </div>
     );
   };
@@ -93,7 +98,7 @@ const CartPage = ({ isOpen, onClose }) => {
         heading={
           <>
             <div className="cart-modal-header">
-              <img src="/cart.svg" height={24} width={24} />
+              <img src="/cart.svg" height={32} width={32} />
               <span>Your cart</span>
             </div>
           </>

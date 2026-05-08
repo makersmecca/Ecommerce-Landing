@@ -1,7 +1,11 @@
 .modal {
     width: 50vw;
-    min-height: 300px;
+    max-height: 900px !important;
     max-width: 900px !important;
+
+    @media (max-width: 1024px) {
+        min-width: 90vw !important;
+    }
 
     .cart-modal-header {
         display: flex;
@@ -26,7 +30,7 @@
             flex-direction: column;
             gap: 20px;
             min-height: 200px;
-            max-height: 600px;
+            max-height: 440px;
             overflow-y: auto;
             padding-top: 1.5rem;
             padding-bottom: 1.5rem;
@@ -60,16 +64,31 @@
                     gap: 20px;
 
                     .image-section {
-                        width: 160px;
-                        height: 200px;
+                        width: 140px;
+                        height: 160px;
                         position: relative;
                         box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.15);
                         border-radius: 10px;
 
+                        @media (max-width: 1024px) {
+                            width: 90px;
+                            height: 115px;
+                            box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.15);
+                        }
+
                         img {
-                            width: 100%;
                             height: 100%;
+                            width: 100%;
                             border-radius: 10px;
+                            display: block;
+
+                            @media (max-width: 1024px) {
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                padding: 0px;
+                                max-width: 80px !important;
+                            }
                         }
 
                         .item-discount {
@@ -92,9 +111,12 @@
 
                     .details-section {
                         flex: 1;
-                        // margin-left: 20px;
                         display: flex;
                         align-items: center;
+
+                        @media (max-width: 499px) {
+                            display: none;
+                        }
 
                         .item-name {
                             font-family: "Lexend", sans-serif;
@@ -275,6 +297,15 @@
 
             &:hover {
                 box-shadow: 0px 0px 10px rgb(53, 51, 51);
+            }
+
+            &.btn-disabled {
+                background-color: #999;
+                cursor: not-allowed;
+
+                &:hover {
+                    box-shadow: none;
+                }
             }
         }
     }
